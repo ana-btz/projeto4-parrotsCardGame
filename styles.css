@@ -1,0 +1,63 @@
+body {
+    background-color: #EEF9BF;
+    font-family: 'Roboto', sans-serif;
+}
+
+.nome {
+    /* background-color: antiquewhite; */
+    max-width: 540px;
+    margin: 40px auto;
+}
+
+h1 {
+    color: #75B79E;
+    font-size: 56px;
+    font-weight: 700;
+    line-height: 66px;
+    letter-spacing: -0.004em;
+    text-align: center;
+}
+
+.container {
+    /* background-color: rgba(240, 248, 255, 0.432); */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.carta {
+    width: 117px;
+    height: 146px;
+    position: relative;
+}
+
+.carta:hover {
+    cursor: pointer;
+}
+
+.face {
+    background-color: #A7E9AF;
+    width: 100%;
+    height: 100%;
+    border: 1px solid #99CEA8;
+    border-radius: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    backface-visibility: hidden;
+    transition: all .5s;
+    transform-style: preserve-3d;
+}
+
+.verso {
+    transform: rotateY(180deg);
+}
+
+.verso-onclick {
+    transform: rotateY(0deg);
+}
+
+.frente-onclick {
+    transform: rotateY(-180deg);
+}
