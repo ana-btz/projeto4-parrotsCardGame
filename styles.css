@@ -20,7 +20,10 @@ h1 {
 
 .container {
     /* background-color: rgba(240, 248, 255, 0.432); */
+    max-width: 900px;
+    margin: auto;
     display: flex;
+    flex-wrap: wrap;
     justify-content: center;
     align-items: center;
 }
@@ -28,6 +31,7 @@ h1 {
 .carta {
     width: 117px;
     height: 146px;
+    margin: 16px;
     position: relative;
 }
 
@@ -50,7 +54,12 @@ h1 {
     transform-style: preserve-3d;
 }
 
+/* .frente {
+    background-color: blue;
+} */
+
 .verso {
+    /* background-color: red; */
     transform: rotateY(180deg);
 }
 
@@ -60,4 +69,8 @@ h1 {
 
 .frente-onclick {
     transform: rotateY(-180deg);
+}
+
+img {
+    width: 100%;
 }
