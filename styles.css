@@ -54,22 +54,25 @@ h1 {
     transform-style: preserve-3d;
 }
 
-/* .frente {
-    background-color: blue;
-} */
-
-.verso {
-    /* background-color: red; */
+.frente {
     transform: rotateY(180deg);
 }
 
-.verso-onclick {
+.verso-onclick .face {
+    transform: rotateY(-180deg);
+}
+
+.frente-onclick .frente {
     transform: rotateY(0deg);
 }
 
-.frente-onclick {
-    transform: rotateY(-180deg);
+/* .removeVerso .face {
+    transform: rotateY(180deg);
 }
+
+.removeFrente .frente {
+    transform: rotateY(180deg);
+} */
 
 img {
     width: 100%;

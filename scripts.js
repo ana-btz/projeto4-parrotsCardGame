@@ -11,12 +11,12 @@ const papagaio6 = "<img src='./media/unicornparrot.gif'";
 const papagaio7 = "<img src='./media/mineparrot.gif'";
 
 const gifs = [
-    papagaio1, papagaio1, 
-    papagaio2, papagaio2, 
-    papagaio3, papagaio3, 
-    papagaio4, papagaio4, 
-    papagaio5, papagaio5, 
-    papagaio6, papagaio6, 
+    papagaio1, papagaio1,
+    papagaio2, papagaio2,
+    papagaio3, papagaio3,
+    papagaio4, papagaio4,
+    papagaio5, papagaio5,
+    papagaio6, papagaio6,
     papagaio7, papagaio7];
 
 let cartas = [];
@@ -43,52 +43,61 @@ function geraCartas() {
 
     for (let i = 0; i < qtd; i++) {
         const carta = `
-            <li class="carta" class="${i}" onclick="viraCarta()">
-                <div class="face frente" >
+            <li class="carta" onclick="viraCarta(this)">
+                <div class="face verso" >
                     <img src='./media/front 1.png'>
                 </div>
-                <div class="face verso">
+                <div class="face frente">
                     ${gifs[i]}
                 </div>
-            </li>`
+            </li>
+            `
 
         cartas.push(carta);
     }
-    
+
     cartas.sort(comparador);
-    deck.innerHTML += cartas;    
+    deck.innerHTML += cartas;
 }
 geraCartas();
 
-function comparador() { 
-	return Math.random() - 0.5; 
+function comparador() {
+    return Math.random() - 0.5;
 }
+
 
 // funçao que vira a cartinha ao ser clicada
 
-function viraCarta() {
-    const frente = document.querySelector(".frente");
-    const verso = document.querySelector(".verso");
+let cartaVirada = [];
+let jogadas = 0;
 
-    for (let i = 0; i < qtd; i++) {
-        frente.classList.add("frente-onclick");
-        verso.classList.add("verso-onclick");
+function viraCarta(carta) {
+    // carta.classList.contains(".carta")
+    carta.classList.add("frente-onclick");
+    carta.classList.add("verso-onclick");
+    cartaVirada += carta;
+
+    if (cartaVirada.length >= 22) {
+        if (cartaVirada[0] === carta) {
+            cartaVirada = [];
+        } else {
+            setTimeout(desviraCarta, 1000);
+            cartaVirada += carta;
+        }
     }
 
-    // setTimeout(desviraCarta, 1000);
+    jogadas++;
+
 }
 
-// function viraCartaVerso() {    
+function desviraCarta() {
+    let frente = document.querySelectorAll(".carta .frente");
+    let verso = document.querySelectorAll(".carta .face")
+    for (let i = 0; i < qtd; i++) {
+        frente[i].classList.remove("frente-onclick");
+        verso[i].classList.remove("verso-onclick");
+    }
+}
 
-//     for (let i = 0; i < qtd; i++) {
-//         const verso = document.querySelector(`.$[i] .verso"`);
-//         verso.classList.add("verso-onclick");
-//     }
 
-// }
-
-// function desviraCarta() {
-//     frente.classList.remove("frente-onclick");
-//     verso.classList.remove("verso-onclick");
-// }
 
